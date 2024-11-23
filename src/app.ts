@@ -11,6 +11,8 @@ async function main() {
     dbName: envs.MONGO_DB_NAME,
   });
 
+  Server.start();
+
   //Crear una collecion = tabla en BD relacional, documento = row o registro en BD relacional
   // const newLog = await LogModel.create({
   //   message: "Test message desde Mongo",
@@ -23,6 +25,5 @@ async function main() {
   // const logs = await LogModel.find();
   // console.log(logs);
 
-  // Server.start();
   // console.log(envs);
 }
