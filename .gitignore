@@ -131,7 +131,11 @@ dist
 .pnp.*
 
 #mongo db
-mongo/
+/mongo
 
 #postgres db
-postgres/
+/postgres
+
+#test dbs
+/mongo-test
+/postgres-test

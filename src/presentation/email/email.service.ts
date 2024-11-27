@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { envs } from "../../config/plugins/envs";
+import { envs } from "../../config/plugins/envs.plugin";
 import { htmlBody as emailBody } from "./email-template/email-template";
 import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
