@@ -25,6 +25,6 @@ export class PostgresLogDatasource implements LogDatasource {
       where: { level: severityEnum[severityLevel] },
     });
 
-    return logs.map((postresLog) => LogEntity.fromObject(postresLog));
+    return logs.map((postgresLog) => LogEntity.fromObject(postgresLog));
   }
 }

@@ -4,6 +4,15 @@ export enum LogSeverityLevel {
   high = "high",
 }
 
+const severityEnumReverse = {
+  LOW: LogSeverityLevel.low,
+  MEDIUM: LogSeverityLevel.medium,
+  HIGH: LogSeverityLevel.high,
+  low: LogSeverityLevel.low,
+  medium: LogSeverityLevel.medium,
+  high: LogSeverityLevel.high,
+};
+
 export interface LogEntityOptions {
   level: LogSeverityLevel;
   message: string;
@@ -41,12 +50,26 @@ export class LogEntity {
 
   static fromObject = (object: { [key: string]: any }): LogEntity => {
     const { message, level, createdAt, origin } = object;
+
+    // Normalize `level` to uppercase
+    const normalizedLevel =
+      typeof level === "string" ? level.toUpperCase() : level;
+
+    if (!Object.keys(severityEnumReverse).includes(normalizedLevel)) {
+      throw new Error(`Invalid severity level: ${level}`);
+    }
+
     const log = new LogEntity({
       message,
-      level,
+      level:
+        severityEnumReverse[
+          normalizedLevel as keyof typeof severityEnumReverse
+        ],
       createdAt,
       origin,
     });
+
+    console.log(log);
 
     return log;
   };
